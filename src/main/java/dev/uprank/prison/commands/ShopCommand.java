@@ -31,7 +31,7 @@ public class ShopCommand implements CommandExecutor, TabCompleter {
             player.sendMessage(Prison.PREFIX + "§7usage: shop list (you can see all shops)");
             player.sendMessage(Prison.PREFIX + "§7usage: shop visit <playerName> (you can visit a shop)");
             player.sendMessage(Prison.PREFIX + "§7usage: shop transactions (you can view your transactions)");
-            player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1f, 1f);
+            player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_HURT, 1f, 1f);
             return false;
         }
 

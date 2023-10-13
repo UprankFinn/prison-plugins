@@ -30,7 +30,7 @@ public class CrateCommand implements CommandExecutor {
             //TODO: MESSAGE
             player.sendMessage(Prison.PREFIX + "§7usage: give <name> <type> <amount>");
             player.sendMessage(Prison.PREFIX + "§7usage: list (list of types of crates)");
-            player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1f, 1f);
+            player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_HURT, 1f, 1f);
         } else if (args.length == 1) {
             if (args[0].equalsIgnoreCase("list")) {
                 this.plugin.getCrateManager().getCrates().forEach((name, crate) -> player.sendMessage(Prison.PREFIX + name));
@@ -64,14 +64,14 @@ public class CrateCommand implements CommandExecutor {
                     //TODO: MESSAGE
                     player.sendMessage(Prison.PREFIX + "§7usage: give <name> <type> <amount>");
                     player.sendMessage(Prison.PREFIX + "§7usage: list (list of types of crates)");
-                    player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1f, 1f);
+                    player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_HURT, 1f, 1f);
                 }
             }
         } else {
             //TODO: MESSAGE
             player.sendMessage(Prison.PREFIX + "§7usage: give <name> <type> <amount>");
             player.sendMessage(Prison.PREFIX + "§7usage: list (list of types of crates)");
-            player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1f, 1f);
+            player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_HURT, 1f, 1f);
         }
 
         return false;

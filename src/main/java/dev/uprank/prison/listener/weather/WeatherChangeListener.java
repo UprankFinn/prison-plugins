@@ -16,6 +16,6 @@ public class WeatherChangeListener implements Listener {
 
     @EventHandler
     public void handle(WeatherChangeEvent event) {
-        if (event.getWorld().getName().startsWith("prison")) event.setCancelled(true);
+        event.setCancelled(true);
     }
 }

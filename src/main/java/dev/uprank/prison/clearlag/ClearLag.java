@@ -2,6 +2,8 @@ package dev.uprank.prison.clearlag;
 
 import dev.uprank.prison.Prison;
 import org.bukkit.Bukkit;
+import org.bukkit.World;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.event.entity.ItemDespawnEvent;
@@ -43,13 +45,13 @@ public class ClearLag {
                     Bukkit.broadcastMessage(Prison.PREFIX + "§cItems lying on the floor will be deleted in §e" + this.countdown + " §csecond!");
                 } else if (this.countdown == 0) {
 
-                    Bukkit.getWorlds().forEach((worlds) -> {
-                        worlds.getEntities().forEach((entities) -> {
-                            if (entities.getType().equals(EntityType.DROPPED_ITEM)) {
-                                Bukkit.getPluginManager().callEvent(new ItemDespawnEvent((Item) entities, entities.getLocation()));
+                    for (World world : Bukkit.getWorlds()) {
+                        for (Entity entity : world.getEntities()) {
+                            if (entity instanceof Item) {
+                                entity.remove();
                             }
-                        });
-                    });
+                        }
+                    }
 
                     this.stopCountdown();
                     Bukkit.getScheduler().cancelTask(startCountdown);

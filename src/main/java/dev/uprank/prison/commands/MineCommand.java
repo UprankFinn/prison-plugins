@@ -31,7 +31,7 @@ public class MineCommand implements CommandExecutor {
 
             if (this.plugin.getMineEntityManager().getMines().get(warp) == null) {
                 player.sendMessage(Prison.PREFIX + "§cThis Mine does not exist!");
-                player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1f, 1f);
+                player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_HURT, 1f, 1f);
                 return false;
             }
 

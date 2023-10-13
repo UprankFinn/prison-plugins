@@ -5,6 +5,8 @@ author: Uprank
 api-version: 1.20
 
 commands:
+  balance:
+    permission: nx
   crate:
     permission: nx
   eco:
@@ -13,7 +15,11 @@ commands:
     permission: nx
   fly:
     permission: nx
+  gems:
+    permission: nx
   mine:
+    permission: nx
+  pay:
     permission: nx
   rankup:
     permission: nx

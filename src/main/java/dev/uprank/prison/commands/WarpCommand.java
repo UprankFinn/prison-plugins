@@ -26,7 +26,7 @@ public class WarpCommand implements CommandExecutor {
 
         if (args.length == 0) {
             player.sendMessage(Prison.PREFIX + "§7Please use: §6/warp <spawn:arena:plotworld>");
-            player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 1f, 1f);
+            player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_HURT, 1f, 1f);
         } else if (args.length == 1) {
             String warp = args[0];
 
