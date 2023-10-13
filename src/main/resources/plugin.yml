@@ -1,0 +1,27 @@
+name: Prison
+version: 1.0-SNAPSHOT
+main: dev.uprank.prison.Prison
+author: Uprank
+api-version: 1.20
+
+commands:
+  crate:
+    permission: nx
+  eco:
+    permission: nx
+  feed:
+    permission: nx
+  fly:
+    permission: nx
+  mine:
+    permission: nx
+  rankup:
+    permission: nx
+  setup:
+    permission: nx
+  stats:
+    permission: nx
+  vanish:
+    permission: nx
+  warp:
+    permission: nx
