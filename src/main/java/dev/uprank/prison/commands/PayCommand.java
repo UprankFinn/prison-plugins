@@ -53,11 +53,20 @@ public class PayCommand implements TabCompleter, CommandExecutor {
                 return false;
             }
 
+            if (this.plugin.getPlayerEntityManager().getPlayer(player.getUniqueId()).getBalance() <= amount) {
+                player.sendMessage(Prison.PREFIX + "§cYou don't have enough money!");
+                player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_HURT, 1f, 1f);
+                return false;
+            }
+
             player.sendMessage(Prison.PREFIX + "§7You have §6" + target.getName() + " " + amount + " §7paid over!");
             target.sendMessage(Prison.PREFIX + "§7You have §6" + amount + " §7from §6" + player.getName() + " §7received!");
 
             ScoreboardUtil.updateScoreboard(player, 4, "§7Balance: §6" + MathUtil.kuerzeInteger(Prison.getInstance().getPlayerEntityManager().getPlayer(player.getUniqueId()).getBalance()));
             ScoreboardUtil.updateScoreboard(target, 4, "§7Balance: §6" + MathUtil.kuerzeInteger(Prison.getInstance().getPlayerEntityManager().getPlayer(target.getUniqueId()).getBalance()));
+
+            this.plugin.getPlayerEntityManager().getPlayer(target.getUniqueId()).addBalance(amount);
+            this.plugin.getPlayerEntityManager().getPlayer(player.getUniqueId()).removeBalance(amount);
 
             player.playSound(player.getLocation(), Sound.ENTITY_TURTLE_LAY_EGG, 1f, 1f);
             target.playSound(target.getLocation(), Sound.ENTITY_TURTLE_LAY_EGG, 1f, 1f);

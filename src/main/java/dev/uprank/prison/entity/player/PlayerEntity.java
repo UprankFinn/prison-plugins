@@ -73,11 +73,9 @@ public class PlayerEntity {
     }
 
     public void removeBalance(Integer balance) {
-
         this.balance -= balance;
         Prison.getInstance().getMongoClient().getDatabase("prison").getCollection("players").updateOne(
                 Filters.eq("uniqueId", uniqueId.toString()), Updates.set("balance", this.balance));
-        System.out.println("REMOVEBALANCE: 2: " + (this.balance));
     }
 
     public Integer getGems() {

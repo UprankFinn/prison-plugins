@@ -2,6 +2,8 @@ package dev.uprank.prison;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.plotsquared.core.PlotAPI;
+import com.plotsquared.core.PlotSquared;
 import dev.uprank.prison.clearlag.ClearLag;
 import dev.uprank.prison.commands.*;
 import dev.uprank.prison.crate.CrateManager;
@@ -59,9 +61,11 @@ public class Prison extends JavaPlugin {
     private final CrateManager crateManager;
     private final InventoryUtil inventoryUtil;
 
+    private PlotAPI plotAPI;
+
     public Prison() {
         instance = this;
-        this.mongoClient = new MongoClient(new MongoClientURI("mongodb://root:ezcdhmWhPjssQ475338alu3ClazCg9BX@185.245.61.156:27017/admin?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false"));
+        this.mongoClient = new MongoClient(new MongoClientURI(""));
         this.crateManager = new CrateManager();
         this.inventoryUtil = new InventoryUtil();
     }
@@ -72,6 +76,8 @@ public class Prison extends JavaPlugin {
         this.mineEntityManager = new MineEntityManager(this);
         this.playerEntityManager = new PlayerEntityManager(this);
         this.rankManager = new RankManager();
+
+        this.plotAPI = new PlotAPI();
 
         new ClearLag(this);
 
@@ -111,6 +117,7 @@ public class Prison extends JavaPlugin {
         new FeedCommand(this);
         new FlyCommand(this);
         new GemsCommand(this);
+        new HouseCommand(this);
         new MineCommand(this);
         new PayCommand(this);
         new RankupCommand(this);
@@ -119,21 +126,6 @@ public class Prison extends JavaPlugin {
         new VanishCommand(this);
         new WarpCommand(this);
 
-        ScoreboardTeam adminTeam = scoreboard.g("admin");
-        adminTeam.b(IChatBaseComponent.b("§4" + "Admin" + " §7| §4"));
-        adminTeam.a(EnumChatFormat.valueOf(ChatColor.DARK_RED.name().toUpperCase()));
-        adminTeam.a(ScoreboardTeamBase.EnumTeamPush.b);
-
-        ScoreboardTeam playerTeam = scoreboard.g("player");
-        playerTeam.b(IChatBaseComponent.b("§7"));
-        playerTeam.a(EnumChatFormat.valueOf(ChatColor.GRAY.name().toUpperCase()));
-        playerTeam.a(ScoreboardTeamBase.EnumTeamPush.b);
-
-        Bukkit.getWorlds().forEach((worlds) -> {
-            worlds.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
-            worlds.setGameRule(GameRule.DISABLE_RAIDS, false);
-            worlds.setGameRule(GameRule.MOB_GRIEFING, false);
-        });
     }
 
     @Override

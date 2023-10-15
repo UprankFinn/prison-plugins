@@ -17,6 +17,8 @@ commands:
     permission: nx
   gems:
     permission: nx
+  house:
+    permission: nx
   mine:
     permission: nx
   pay:
